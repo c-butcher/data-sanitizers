@@ -51,7 +51,7 @@ class Sanitizer {
         }
 
         if (typeof sanitizer !== 'function') {
-            throw new Error('Sanitizer argument must be a function that implements OpenData.Schema.Field.Sanitizer.');
+            throw new Error('Sanitizer argument must be a function that implements Sanitizer.');
         }
 
         sanitizers.set(name, sanitizer);
@@ -89,7 +89,7 @@ class Sanitizer {
 
         let cleaner = new SanitizerType(options);
         if (!(cleaner instanceof Sanitizer)) {
-            throw new Error(`Sanitizer '${name}' must implement OpenData.Schema.Field.Sanitizer.`);
+            throw new Error(`Sanitizer '${name}' must implement Sanitizer.`);
         }
 
         return cleaner;
