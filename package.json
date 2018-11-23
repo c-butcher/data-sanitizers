@@ -4,7 +4,7 @@
   "description": "Sanitizers for the Open Data Management System.",
   "main": "main.js",
   "scripts": {
-    "test": "mocha"
+    "test": "node_modules/mocha/bin/mocha --recursive"
   },
   "repository": {
     "type": "git",
