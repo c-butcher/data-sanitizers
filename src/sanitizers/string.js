@@ -7,7 +7,11 @@ class String extends Sanitizer {
 
     defaults() {
         return {
-            glue: ','
+            glue: ',',
+            length: {
+                min: null,
+                max: null,
+            }
         };
     }
 
@@ -27,6 +31,8 @@ class String extends Sanitizer {
         if (typeof value === 'number' || value instanceof Date) {
             value = value.toString();
         }
+
+        value = this.constructor.clean(value, 'length', this.length);
 
         return value;
     }
