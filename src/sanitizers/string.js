@@ -1,4 +1,5 @@
 const Sanitizer = require('../sanitizer');
+const Length = require('../sanitizers/length');
 
 class String extends Sanitizer {
     constructor(options = {}) {
@@ -32,7 +33,8 @@ class String extends Sanitizer {
             value = value.toString();
         }
 
-        value = this.constructor.clean(value, 'length', this.length);
+        let cleaner = new Length(this.length);
+        value = cleaner.sanitize(value);
 
         return value;
     }
