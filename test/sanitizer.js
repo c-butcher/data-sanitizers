@@ -1,5 +1,6 @@
 const chai = require('chai');
-const { Sanitizer, String } = require('../main');
+const Sanitizer = require('../src/sanitizer');
+const String = require('../src/sanitizers/string');
 
 describe('Sanitizer', function() {
 

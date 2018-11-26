@@ -1,5 +1,5 @@
 const chai = require('chai');
-const { SanitationError } = require('../main');
+const SanitationError = require('../src/sanitation-error');
 
 describe('Sanitation Error', function() {
 
