@@ -4,6 +4,10 @@ const String = require('../src/sanitizers/string');
 
 describe('Sanitizer', function() {
 
+    before(() => {
+        Sanitizer.add('string', String);
+    });
+
     describe('constructor(options)', function() {
         it('passes when supplied argument is an object', function() {
             chai.expect(function(){
