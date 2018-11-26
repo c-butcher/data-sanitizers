@@ -1,37 +1,44 @@
 const chai = require('chai');
-const { Sanitizer } = require('../../main');
+const Boolean = require('../../src/sanitizers/boolean');
 
 describe('Boolean Sanitizer', function() {
-    it('exists and is accessible', function() {
-        chai.assert.isOk(Sanitizer.types().has('string'));
-    });
 
     it('passes when sanitizing a string', function() {
-        let value = Sanitizer.clean('Hello', 'boolean');
+        let sanitizer = new Boolean();
+
+        let value = sanitizer.sanitize('hello');
 
         chai.assert.isBoolean(value);
     });
 
     it('passes when sanitizing a number', function() {
-        let value = Sanitizer.clean(123, 'boolean');
+        let sanitizer = new Boolean();
+
+        let value = sanitizer.sanitize(123);
 
         chai.assert.isBoolean(value);
     });
 
     it('passes when sanitizing a boolean', function() {
-        let value = Sanitizer.clean(false, 'boolean');
+        let sanitizer = new Boolean();
+
+        let value = sanitizer.sanitize(false);
 
         chai.assert.isBoolean(value);
     });
 
     it('passes when sanitizing an array', function() {
-        let value = Sanitizer.clean(['one', 123, true], 'boolean');
+        let sanitizer = new Boolean();
+
+        let value = sanitizer.sanitize(['one', 123, true]);
 
         chai.assert.isBoolean(value);
     });
 
     it('passes when sanitizing an object', function() {
-        let value = Sanitizer.clean({Hello: 'World'}, 'boolean');
+        let sanitizer = new Boolean();
+
+        let value = sanitizer.sanitize({Hello: 'World'});
 
         chai.assert.isBoolean(value);
     });

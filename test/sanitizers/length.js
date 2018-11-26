@@ -1,25 +1,26 @@
 const chai = require('chai');
-const { Sanitizer } = require('../../main');
+const Length = require('../../src/sanitizers/length');
 
 describe('Length Sanitizer', function() {
-    it('exists and is accessible', function() {
-        chai.assert.isOk(Sanitizer.types().has('length'));
-    });
 
     it('passes when trimming string length', function() {
-        let value = Sanitizer.clean('1234567890', 'length', {
+        let length = new Length({
             max: 5
         });
+
+        let value = length.sanitize('1234567890');
 
         chai.assert.isString(value);
         chai.assert.lengthOf(value, 5);
     });
 
     it('passes when padding string length', function() {
-        let value = Sanitizer.clean('12', 'length', {
+        let length = new Length({
             min: 5,
             fill: 345,
         });
+
+        let value = length.sanitize('12');
 
         chai.assert.isString(value);
         chai.assert.lengthOf(value, 5);
@@ -27,38 +28,46 @@ describe('Length Sanitizer', function() {
     });
 
     it('passes when trimming array length', function() {
-        let value = Sanitizer.clean([1,2,3,4,5,6,7,8,9,10], 'length', {
-            max: 5
+        let length = new Length({
+            max: 5,
         });
+
+        let value = length.sanitize([1,2,3,4,5,6,7,8,9,10]);
 
         chai.assert.isArray(value);
         chai.assert.lengthOf(value, 5);
     });
 
     it('passes when padding array length', function() {
-        let value = Sanitizer.clean([1,2], 'length', {
+        let length = new Length({
             min: 5,
             fill: [3,4,5],
         });
+
+        let value = length.sanitize([1,2]);
 
         chai.assert.isArray(value);
         chai.assert.lengthOf(value, 5);
     });
 
     it('passes when trimming number length', function() {
-        let value = Sanitizer.clean(1234567890, 'length', {
-            max: 5
+        let length = new Length({
+            max: 5,
         });
+
+        let value = length.sanitize(1234567890);
 
         chai.assert.isNumber(value);
         chai.assert.lengthOf(value.toString(), 5);
     });
 
     it('passes when padding number length', function() {
-        let value = Sanitizer.clean(12, 'length', {
+        let length = new Length({
             min: 5,
             fill: 345,
         });
+
+        let value = length.sanitize(12);
 
         chai.assert.isNumber(value);
         chai.assert.lengthOf(value.toString(), 5);
