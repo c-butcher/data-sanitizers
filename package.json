@@ -1,27 +1,28 @@
 {
-  "name": "open-data-sanitizers",
+  "name": "data-sanitizers",
   "version": "1.0.0",
-  "description": "Sanitizers for the Open Data Management System.",
+  "description": "Sanitizers that help clean and format your data.",
   "main": "main.js",
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha --recursive"
+    "test": "mocha --recursive"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/c-butcher/open-data-sanitizers.git"
+    "url": "git+https://github.com/c-butcher/data-sanitizers.git"
   },
   "keywords": [
     "Data",
+    "Sanitize",
+    "Sanitizer",
     "Sanitizers",
-    "Sanitation",
-    "Transformers"
+    "Sanitation"
   ],
   "author": "Chris Butcher",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/c-butcher/open-data-sanitizers/issues"
+    "url": "https://github.com/c-butcher/data-sanitizers/issues"
   },
-  "homepage": "https://github.com/c-butcher/open-data-sanitizers#readme",
+  "homepage": "https://github.com/c-butcher/data-sanitizers#readme",
   "dependencies": {
     "chai": "^4.2.0",
     "mocha": "^5.2.0"
