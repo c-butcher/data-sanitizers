@@ -21,6 +21,10 @@ class String extends Sanitizer {
             value = value.join(this.options.glue);
         }
 
+        if (typeof value === 'function') {
+            value = '[Function]';
+        }
+
         if (typeof value === 'object') {
             value = JSON.stringify(value);
         }
