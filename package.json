@@ -1,6 +1,6 @@
 {
   "name": "data-sanitizers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sanitizers that help clean and format your data.",
   "main": "main.js",
   "scripts": {
