@@ -25,6 +25,7 @@
   "homepage": "https://github.com/c-butcher/data-sanitizers#readme",
   "dependencies": {
     "chai": "^4.2.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "formatted-error": "^1.0.1"
   }
 }

@@ -1,3 +1,5 @@
+const SanitationError = require('formatted-error');
+
 let sanitizers = new Map();
 
 class Sanitizer {
@@ -10,20 +12,20 @@ class Sanitizer {
      */
     constructor(name, options = {}) {
         if (this.constructor === Sanitizer) {
-            throw new Error('Abstract class Sanitizer cannot be called directly.');
+            throw new SanitationError('Abstract class Sanitizer cannot be called directly.');
         }
 
         if (typeof this.sanitize !== 'function') {
-            throw new Error('Abstract class Sanitizer must implement a sanitize() method.')
+            throw new SanitationError('Abstract class Sanitizer must implement a sanitize() method.')
         }
 
         if (typeof options !== 'object') {
-            throw new Error('Options argument must be an object.');
+            throw new SanitationError('Options argument must be an object.');
         }
 
         let defaults = this.defaults();
         if (typeof defaults !== 'object') {
-            throw new Error('Sanitizers defaults() method must return an object.');
+            throw new SanitationError('Sanitizers defaults() method must return an object.');
         }
 
         this.name = name;
@@ -47,11 +49,11 @@ class Sanitizer {
      */
     static add(name, sanitizer) {
         if (typeof name !== 'string') {
-            throw new Error('Name argument must be a string.');
+            throw new SanitationError('Name argument must be a string.');
         }
 
         if (typeof sanitizer !== 'function') {
-            throw new Error('Sanitizer argument must be a function that implements Sanitizer.');
+            throw new SanitationError('Sanitizer argument must be a function that implements Sanitizer.');
         }
 
         sanitizers.set(name, sanitizer);
@@ -78,18 +80,18 @@ class Sanitizer {
      */
     static get(name, options = {}) {
         if (typeof name !== 'string') {
-            throw new Error('Name argument must be a string.');
+            throw new SanitationError('Name argument must be a string.');
         }
 
         if (!sanitizers.has(name)) {
-            throw new Error(`Sanitizer '${name}' not found.`);
+            throw new SanitationError(`Sanitizer '${name}' not found.`);
         }
 
         const SanitizerType = sanitizers.get(name);
 
         let cleaner = new SanitizerType(options);
         if (!(cleaner instanceof Sanitizer)) {
-            throw new Error(`Sanitizer '${name}' must implement Sanitizer.`);
+            throw new SanitationError(`Sanitizer '${name}' must implement Sanitizer.`);
         }
 
         return cleaner;

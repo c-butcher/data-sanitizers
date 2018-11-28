@@ -42,4 +42,12 @@ describe('Boolean Sanitizer', function() {
 
         chai.assert.isBoolean(value);
     });
+
+    it('passes when sanitizing an function', function() {
+        let sanitizer = new Boolean();
+
+        let value = sanitizer.sanitize(() => {});
+
+        chai.assert.isBoolean(value);
+    });
 });

@@ -47,4 +47,12 @@ describe('String Sanitizer', function() {
         chai.assert.equal(value, '{"Hello":"World"}');
         chai.assert.typeOf(value, 'string');
     });
+
+    it('passes when sanitizing an function', function() {
+        let string = new String();
+
+        let value = string.sanitize(() => {});
+
+        chai.assert.typeOf(value, 'string');
+    });
 });
