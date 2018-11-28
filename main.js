@@ -1,5 +1,4 @@
 const Sanitizer = require('./src/sanitizer');
-const SanitationError = require('./src/sanitation-error');
 
 let Boolean = require('./src/sanitizers/boolean');
 let String = require('./src/sanitizers/string');
@@ -11,7 +10,7 @@ Sanitizer.add('length', Length);
 
 module.exports = {
     Sanitizer,
-    SanitationError,
     String,
+    Length,
     Boolean
 };
