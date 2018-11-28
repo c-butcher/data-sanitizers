@@ -1,16 +1,18 @@
 const Sanitizer = require('./src/sanitizer');
-
-let Boolean = require('./src/sanitizers/boolean');
-let String = require('./src/sanitizers/string');
-let Length = require('./src/sanitizers/length');
+const Boolean = require('./src/sanitizers/boolean');
+const Length = require('./src/sanitizers/length');
+const Number = require('./src/sanitizers/number');
+const String = require('./src/sanitizers/string');
 
 Sanitizer.add('boolean', Boolean);
-Sanitizer.add('string', String);
 Sanitizer.add('length', Length);
+Sanitizer.add('number', Number);
+Sanitizer.add('string', String);
 
 module.exports = {
     Sanitizer,
-    String,
+    Boolean,
     Length,
-    Boolean
+    Number,
+    String,
 };
